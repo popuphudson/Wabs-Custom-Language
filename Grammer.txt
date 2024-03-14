@@ -1,0 +1,100 @@
+###############################
+#         DEFINITIONS         #
+###############################
+
+UNKNOWN -> anything unknown will be classed as this so names of variables and such
+INT -> whole number no decimals can be negative
+FLOAT -> decimal number
+STRING -> anything inside ""
+OP -> operators (==, <=, >=, <, >, !=, from, to)
+BOOLEAN -> true, false
+LIST -> [({UNKNOWN|INT|FLOAT|STRING|BOOL} , )*]
+DICT -> {({UNKNOWN|INT|FLOAT|STRING|BOOL} : {UNKNOWN|INT|STRING|BOOL|LIST|DICT} , )*}
+
+###############################
+#          VARIABLES          #
+###############################
+
+{UNKNOWN} set {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST|DICT} -> sets the variable at the beggining to something, if variable doesn't exist it creates it (if set to another variable it auto copies it)
+{UNKNOWN} add {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST} -> adds the variable at the beggining to somthing (has to be of same type)
+{UNKNOWN} sub {UNKNOWN|INT|FLOAT} -> subtracts the variable at the beggining to somthing (has to be of same type)
+{UNKNOWN} div {UNKNOWN|INT|FLOAT} -> divides the variable at the beggining to somthing (has to be of same type), if the divided variable is int it is whole number, if it is float then it is decimal
+{UNKNOWN} mul {UNKNOWN|INT|FLOAT} -> multiplies the variable at the beggining to somthing (has to be of same type)
+
+###############################
+#            LISTS            #
+###############################
+
+{UNKNOWN} append {UNKNOWN|STRING|INT|FLOAT|BOOL|LIST|DICT} -> appends a value to the list (can't append a list and a list together)
+{UNKNOWN} index {UNKNOWN|INT} set {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST|DICT} -> sets index to value (can't be set as another list)
+{UNKNOWN} get {UNKNOWN} index {UNKNOWN|INT} -> sets the variable to the value at the given index of the list (this works for indexing strings from normal variables)
+{UNKNOWN} lengthto {UNKNOWN} -> saves the length of array to variable (use for iteration)
+pop {UNKNOWN} -> pops the last index of the array
+
+###############################
+#         DICTIONARIES        #
+###############################
+
+{UNKNOWN} update {DICT} -> adds/changes a key value pair to the dictionary (key value)
+{UNKNOWN} access {UNKNOWN} at {UNKNOWN|STRING|INT|FLOAT|BOOL} -> sets the variable to the value at the key in dictionary
+{UNKNOWN} remove {UNKNOWN|STRING|INT|FLOAT|BOOL} -> removes the key and value associated with it
+{UNKNOWN} getkeys {UNKNOWN} -> set the array variable to the list of dictionary keys
+{UNKNOWN} getvalues {UNKNOWN} -> sets the array variable to the list of dictionary values
+
+###############################
+#           CASTING           #
+###############################
+
+toint {UNKNOWN} -> cast variable to integer (cannot be an array)
+tostr {UNKNOWN} -> cast variable to string (cannot be an array)
+
+###############################
+#       SLEEPING/INPUTING     #
+###############################
+
+sleep {INT|FLOAT|UNKNOWN} -> sleep in milliseconds
+inputstr {UNKNOWN} -> input a string to unknown
+inputint {UNKNOWN} -> input a int to unknown will repeat until it gets a valid number
+
+###############################
+#      CONDITIONALS/LOOPS     #
+###############################
+
+if {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST|DICT} {OP} {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST|DICT} then -> if the condition is true run the codes inside (either between the if and end, or if there is an else between the if and else)
+    ...
+else -> if an if statment isn't true run the code in here instead, otherwise don't
+    ...
+end
+
+while {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST|DICT} {OP} {UNKNOWN|INT|FLOAT|STRING|BOOL|LIST|DICT} then
+    ...
+end  -> while the condition is true run the codes inside over and over
+
+break -> stops the while or for loop when called
+
+for {UNKNOWN} from {UNKNOWN|INT} to {UNKNOWN|INT} then
+    ...
+end  -> loops the code inside from start to end and the iteration is stored in the variable referenced if it exists or not
+
+continue -> skips the current iteration of the for loop to the next
+
+################################
+#           FUNCTIONS          #
+################################
+
+func {UNKNOWN}(({UNKNOWN} , )* ) then 
+    ...
+end -> makes a function with args formated like (a, b, c, d) can access anything outside of the function itself aslong as it is defined before the function is run
+
+ncall {UNKNOWN}(({UNKNOWN|STRING|INT|FLOAT|BOOL|LIST|DICT} , )*) -> calls a function with args formated like (a, b, c, d). can only call functions defined before it, has no return value (null call)
+
+rcall {UNKNOWN}(({UNKNOWN|STRING|INT|FLOAT|BOOL|LIST|DICT} , )* ) {UNKNOWN} -> calls a function with args formated like (a, b, c, d). can only call functions defined before it, has return value (return call)
+
+################################
+#         FILES/MODULES        #
+################################
+
+run {UNKNOWN} -> runs a .wabs file in the same directory funcs and vars are accessed like so: "example.example"
+{UNKNOWN} opento {UNKNOWN} -> opens a file and puts the contents into a variable format like file.txt not file
+{UNKNOWN|STRING} writeto {UNKNOWN} -> writes to a file (overrides what is in the file also include file type in the file name)
+import {UNKNOWN} -> imports the module in the Modules folder (brings in definitions from the transmition file) (funcs and vars are accessed the same as run .wabs files)

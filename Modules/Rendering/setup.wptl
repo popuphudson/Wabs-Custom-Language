@@ -1,0 +1,11 @@
+ref -> main.py
+func -> SetMode|int,int -> SetMode
+func -> DrawRect|list,int,int,int,int -> DrawRect
+func -> UpdateDisplay| -> UpdateDisplay
+func -> SetupClock| -> SetupClock
+func -> Tick|int -> Tick
+func -> GetEvents| -> GetEvents
+func -> GetPressedKeys| -> GetPressedKeys
+func -> GetMousePos| -> GetMousePos
+func -> GetMouseClick| -> GetMouseClick
+func -> Fill|list -> Fill

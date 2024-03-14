@@ -1,0 +1,33 @@
+import Rendering
+
+ncall Rendering.SetMode(400, 400)
+ncall Rendering.SetupClock()
+doing set true
+pos set [0, 0]
+while doing == true then
+    rcall Rendering.GetEvents() events
+    events lengthto length
+    for i from 0 to length then
+        event get events index i
+        eventType get event index 0
+        if eventType == "QUIT" then
+            doing set false
+        end
+    end
+
+    ncall Rendering.Tick(60)
+
+    x get pos index 0
+    y get pos index 1
+
+    x add 1
+
+    pos index 0 set x
+    pos index 1 set y
+
+    ncall Rendering.Fill([0,0,0])
+
+    ncall Rendering.DrawRect([255,255,255], x, y, 100, 100)
+
+    ncall Rendering.UpdateDisplay()
+end

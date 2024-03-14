@@ -1,0 +1,16 @@
+ref -> main.py
+func -> sin|float -> sin
+func -> cos|float -> cos
+func -> tan|float -> tan
+func -> log|float,float -> log
+func -> pow|float,float -> pow
+func -> sqrt|float -> sqrt
+func -> atan|float -> atan
+func -> atan2|float,float -> atan2
+func -> floor|float -> floor
+func -> ceil|float -> ceil
+func -> trunc|float -> trunc
+func -> degrees|float -> degrees
+func -> radians|float -> radians
+func -> dist|list,list -> dist
+func -> remainder|float,float -> remainder
